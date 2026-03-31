@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/message.dart';
 
 class ClaudeService {
-  static const String _apiKey = "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";
+  static const String _apiKey = "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";
   static const String _apiUrl = 'https://api.anthropic.com/v1/messages';
   static const String _model = 'claude-sonnet-4-20250514';
 

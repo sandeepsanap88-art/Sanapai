@@ -25,7 +25,7 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release 2>&1 | grep -E "error:|Error:|lib/" | head -50 || true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

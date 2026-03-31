@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _initSpeech();
     _initTts();
     _messages.add(Message(
-      text: 'नमस्कार दादा! 🙏\nमी सानप AI — तुमचा AI सोबती!\nसांगा, आज काय करायचं आहे?',
+      text: 'नमस्कार! 🙏\nमी सानप AI — तुमचा AI सोबती!\nसांगा, आज काय करायचं आहे?',
       isUser: false,
       timestamp: DateTime.now(),
     ));
@@ -112,7 +113,7 @@ class _ChatScreenState extends State<ChatScreen> {
             icon: const Icon(Icons.delete_outline, color: Colors.white54),
             onPressed: () => setState(() {
               _messages.clear();
-              _messages.add(Message(text: 'नमस्कार दादा! 🙏\nपुन्हा सुरुवात करूया!', isUser: false, timestamp: DateTime.now()));
+              _messages.add(Message(text: 'नमस्कार! पुन्हा सुरुवात करूया! 🙏', isUser: false, timestamp: DateTime.now()));
             }),
           ),
         ],
@@ -141,7 +142,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     if (!msg.isUser) Container(
                       width: 32, height: 32, margin: const EdgeInsets.only(right: 8),
-                      decoration: const BoxDecoration(shape: BoxShape.circle, gradient: LinearGradient(colors: [Color(0xFF00D4FF), Color(0xFF7B2FBE)])),
+                      decoration: const BoxDecoration(shape: BoxShape.circle,
+                        gradient: LinearGradient(colors: [Color(0xFF00D4FF), Color(0xFF7B2FBE)])),
                       child: const Center(child: Text('स', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold))),
                     ),
                     Flexible(
@@ -171,7 +173,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 width: 46, height: 46,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: LinearGradient(colors: _isListening ? [Colors.red, Colors.redAccent] : [const Color(0xFF00D4FF), const Color(0xFF7B2FBE)]),
+                  gradient: LinearGradient(colors: _isListening
+                    ? [Colors.red, Colors.redAccent]
+                    : [const Color(0xFF00D4FF), const Color(0xFF7B2FBE)]),
                 ),
                 child: Icon(_isListening ? Icons.mic_off : Icons.mic, color: Colors.white, size: 22),
               ),
@@ -211,7 +215,3 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ]),
         ),
-      ]),
-    );
-  }
-}

@@ -9,14 +9,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: List files
-        run: ls -la
-
-      - name: Unzip project
-        run: unzip -o sanap_ai_flutter.zip
-
-      - name: List after unzip
-        run: ls -la && ls -la sanap_ai/ || ls -la
+      - name: Find ZIP and extract
+        run: |
+          echo "=== Files in repo ==="
+          find . -name "*.zip" -type f
+          ZIP=$(find . -name "*.zip" | head -1)
+          echo "Found ZIP: $ZIP"
+          unzip -o "$ZIP" -d extracted/
+          echo "=== Extracted ==="
+          ls -la extracted/
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -31,13 +32,17 @@ jobs:
           channel: 'stable'
 
       - name: Flutter pub get
-        run: cd sanap_ai && flutter pub get
+        run: |
+          cd extracted/sanap_ai
+          flutter pub get
 
       - name: Build APK
-        run: cd sanap_ai && flutter build apk --release
+        run: |
+          cd extracted/sanap_ai
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Sanap-AI-APK
-          path: sanap_ai/build/app/outputs/flutter-apk/app-release.apk
+          path: extracted/sanap_ai/build/app/outputs/flutter-apk/app-release.apk

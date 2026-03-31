@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sanap_ai">
 
@@ -7,8 +7,7 @@
 
     <application
         android:label="सानप AI"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:name="${applicationName}">
         <activity
             android:name=".MainActivity"
             android:exported="true"

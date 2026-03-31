@@ -4,7 +4,7 @@ import '../models/message.dart';
 
 class ClaudeService {
   static const String _apiKey = "AIzaSyBr36jCEJWQ7Axhj9sAQpr6TWHSHmQJIfY";
-  static const String _apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+  static const String _apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
   static const String _systemPrompt = 'तू "सानप AI" आहेस. Sandeep Sanap यांचा personal AI सोबती. नेहमी मराठी मध्ये बोल. मित्रासारखा स्वभाव ठेव. S Series Now YouTube channel साठी मदत कर. lyrics, SEO, भजन, trading मदत कर.';
 

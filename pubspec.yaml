@@ -1,35 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'screens/chat_screen.dart';
+name: sanap_ai
+description: Sanap AI - Marathi AI Companion
+version: 1.0.0+1
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ),
-  );
-  runApp(const SanapAIApp());
-}
+environment:
+  sdk: '>=3.0.0 <4.0.0'
 
-class SanapAIApp extends StatelessWidget {
-  const SanapAIApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'सानप AI',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF0A0E1A),
-        colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF00D4FF),
-          secondary: Color(0xFF7B2FBE),
-        ),
-      ),
-      home: const ChatScreen(),
-    );
-  }
-}
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  speech_to_text: ^6.6.0
+  flutter_tts: ^3.8.5
+  shared_preferences: ^2.2.2
+  google_fonts: ^6.1.0
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

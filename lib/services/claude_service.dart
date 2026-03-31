@@ -4,7 +4,6 @@ import '../models/message.dart';
 
 class ClaudeService {
   static const String _apiKey ="sk-ant-api03-dxC...iAAA";
-    ';
   static const String _apiUrl = 'https://api.anthropic.com/v1/messages';
   static const String _model = 'claude-sonnet-4-20250514';
 

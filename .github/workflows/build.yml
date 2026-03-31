@@ -25,10 +25,14 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release 2>&1 | grep -E "error:|Error:|lib/" | head -50 || true
+        run: flutter build apk --release
+
+      - name: Find APK
+        run: find . -name "*.apk" 2>/dev/null || echo "APK not found"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Sanap-AI-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/apk/release/app-release.apk
+          if-no-files-found: warn

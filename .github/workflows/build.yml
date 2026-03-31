@@ -6,25 +6,38 @@ jobs:
   build-apk:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - run: unzip sanap_ai_flutter.zip
+      - name: List files
+        run: ls -la
 
-      - uses: actions/setup-java@v4
+      - name: Unzip project
+        run: unzip -o sanap_ai_flutter.zip
+
+      - name: List after unzip
+        run: ls -la && ls -la sanap_ai/ || ls -la
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.6'
+          flutter-version: '3.22.0'
           channel: 'stable'
 
-      - run: cd sanap_ai && flutter pub get
+      - name: Flutter pub get
+        run: cd sanap_ai && flutter pub get
 
-      - run: cd sanap_ai && flutter build apk --release
+      - name: Build APK
+        run: cd sanap_ai && flutter build apk --release
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: Sanap-AI-APK
           path: sanap_ai/build/app/outputs/flutter-apk/app-release.apk
